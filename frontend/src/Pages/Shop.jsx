@@ -7,7 +7,7 @@ const Shop = () => {
   const [popular, setPopular] = useState([]);
 
   useEffect(() => {
-    fetch('https://capstoneproject-backend-i0xb.onrender.com/popularinprotein')
+    fetch('https://capstoneproject-backend-oova.onrender.com/popularinprotein')
       .then((res) => res.json())
       .then((data) => setPopular(data));
   }, []);
