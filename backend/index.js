@@ -16,7 +16,13 @@ const Order = require("./models/Order");
 const app = express();
 const port = process.env.PORT || 4000;
 
-const allowedOrigins = ['https://capstoneproject-frontend-5r5v.onrender.com'];
+const allowedOrigins = [
+  'https://capstoneproject-frontend-5r5v.onrender.com',
+  'https://capstoneproject-admin.onrender.com',
+  'http://localhost:3000',
+  'http://localhost:5173'
+];
+
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
