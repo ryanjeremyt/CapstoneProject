@@ -11,7 +11,7 @@ import LoginSignup from "./Pages/LoginSignup";
 import OrderConfirmation from "./Pages/OrderConfirmation";
 
 //Use environment variable to support production deployment
-export const backend_url = 'https://capstoneproject-backend-i0xb.onrender.com';
+export const backend_url = 'https://capstoneproject-backend-oova.onrender.com';
 export const currency = '$';
 
 function App() {
