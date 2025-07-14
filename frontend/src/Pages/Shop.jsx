@@ -7,7 +7,7 @@ const Shop = () => {
   const [popular, setPopular] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:4000/popularinprotein')  // updated to match new category
+    fetch('https://capstoneproject-backend-i0xb.onrender.com/popularinprotein')
       .then((res) => res.json())
       .then((data) => setPopular(data));
   }, []);
