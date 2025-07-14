@@ -1,0 +1,14 @@
+.order-confirmation {
+  text-align: center;
+  padding: 60px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.order-confirmation h1 {
+  color: #2f4680;
+}
+
+.order-confirmation p {
+  font-size: 20px;
+  margin-top: 10px;
+}
