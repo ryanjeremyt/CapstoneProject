@@ -12,7 +12,7 @@ const LoginSignup = () => {
 
   const login = async () => {
     let dataObj;
-    await fetch('https://capstoneproject-backend-i0xb.onrender.com/login', {
+    await fetch('https://capstoneproject-backend-oova.onrender.com/login', {
       method: 'POST',
       headers: {
         Accept:'application/form-data',
