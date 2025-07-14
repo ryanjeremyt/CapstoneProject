@@ -8,7 +8,7 @@ const ShopCategory = (props) => {
   const [allproducts, setAllProducts] = useState([]);
 
   useEffect(() => {
-    fetch("https://capstoneproject-backend-i0xb.onrender.com/allproducts")
+    fetch("https://capstoneproject-backend-oova.onrender.com/allproducts")
       .then((res) => res.json())
       .then((data) => setAllProducts(data));
   }, []);
