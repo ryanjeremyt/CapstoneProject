@@ -3,7 +3,7 @@ import Footer from "./Components/Footer/Footer";
 import Navbar from "./Components/Navbar/Navbar";
 import Admin from "./Pages/Admin";
 
-export const backend_url = 'https://capstoneproject-backend-i0xb.onrender.com';
+export const backend_url = 'https://capstoneproject-backend-oova.onrender.com';
 export const currency = '$';
 
 function App() {
