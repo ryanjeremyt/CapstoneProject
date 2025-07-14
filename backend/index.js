@@ -16,10 +16,22 @@ const Order = require("./models/Order");
 const app = express();
 const port = process.env.PORT || 4000;
 
-// Middleware
-app.use(express.json());
-app.use(cors()); 
+const allowedOrigins = ['https://capstoneproject-frontend-5r5v.onrender.com'];
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+}));
 
+// === Middleware ===
+app.use(express.json());
+
+// === MongoDB Connection ===
 if (!process.env.MONGO_URI) {
   console.error("MONGO_URI not found in .env");
   process.exit(1);
@@ -30,8 +42,10 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
+// === Static Assets for Images ===
 app.use('/images', express.static('upload/images'));
 
+// === Image Upload Setup ===
 const storage = multer.diskStorage({
   destination: './upload/images',
   filename: (req, file, cb) => {
@@ -44,12 +58,13 @@ app.post("/upload", upload.single('product'), (req, res) => {
   res.json({ success: 1, image_url: `/images/${req.file.filename}` });
 });
 
+// === Authentication Middleware ===
 const fetchuser = async (req, res, next) => {
   const token = req.header("auth-token");
   if (!token) return res.status(401).send({ errors: "Please authenticate using a valid token" });
 
   try {
-    const data = jwt.verify(token, "secret_ecom"); // 🔐 Consider using process.env.JWT_SECRET
+    const data = jwt.verify(token, "secret_ecom");
     req.user = data.user;
     next();
   } catch {
@@ -57,6 +72,7 @@ const fetchuser = async (req, res, next) => {
   }
 };
 
+// === Routes ===
 app.get("/", (req, res) => res.send("Root"));
 
 app.post('/signup', async (req, res) => {
@@ -194,4 +210,5 @@ app.post("/api/place-order", async (req, res) => {
   }
 });
 
+// === Start Server ===
 app.listen(port, () => console.log(`Server running on port ${port}`));
