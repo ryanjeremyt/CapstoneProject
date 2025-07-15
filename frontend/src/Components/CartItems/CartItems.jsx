@@ -58,9 +58,9 @@ const CartItems = () => {
                   alt={product.name}
                 />
                 <p className="cartitems-product-title">{product.name}</p>
-                <p>{currency}{product.new_price}</p>
+                <p>{currency}{product.new_price.toFixed(2)}</p>
                 <button className="cartitems-quantity">{cartItems[product.id]}</button>
-                <p>{currency}{product.new_price * cartItems[product.id]}</p>
+                <p>{currency}{(product.new_price * cartItems[product.id]).toFixed(2)}</p>
                 <img
                   onClick={() => removeFromCart(product.id)}
                   className="cartitems-remove-icon"
@@ -81,7 +81,7 @@ const CartItems = () => {
           <div>
             <div className="cartitems-total-item">
               <p>Subtotal</p>
-              <p>{currency}{getTotalCartAmount()}</p>
+              <p>{currency}{getTotalCartAmount().toFixed(2)}</p>
             </div>
             <hr />
             <div className="cartitems-total-item">
@@ -91,7 +91,7 @@ const CartItems = () => {
             <hr />
             <div className="cartitems-total-item">
               <h3>Total</h3>
-              <h3>{currency}{getTotalCartAmount()}</h3>
+              <h3>{currency}{getTotalCartAmount().toFixed(2)}</h3>
             </div>
           </div>
           <button onClick={handleCheckout}>PROCEED TO CHECKOUT</button>
